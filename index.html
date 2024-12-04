@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks</title>
+</head>
+
+<body>
+
+    <h1>Percentage Calculator</h1>
+    <button id="btn1" onclick="fun()">start taking marks for subjects</button>
+    <h3>English :</h3>
+    <h3>Hindi :</h3>
+    <h3>Maths :</h3>
+    <h3>Science :</h3>
+    <h3>Social Science :</h3>
+    <h2>Average of all Subject : </h2>
+    <button onclick="getAverage()">Calculate Average</button>
+    <h2>Total percentage</h2>
+    <button onclick="getPercentage()">Calculate Percentage</button>
+
+    <script>
+
+        function check(num) {
+            if (num < 0 || num > 100) {
+                alert("Please Enter Valid Marks")
+            }
+        }
+        let english, hindi, maths, science, sst;
+        function fun() {
+            english = +prompt("Enter your English Marks")
+            check(english)
+            hindi = +prompt("Enter your hindi Marks")
+            check(hindi)
+            maths = +prompt("Enter maths Marks")
+            check(maths)
+            science = +prompt("Enter science Marks")
+            check(science)
+            sst = +prompt("Enter sst Marks")
+            check(sst)
+            let allH3 = document.querySelectorAll('h3');
+            allH3[0].textContent += english;
+            allH3[1].textContent += hindi;
+            allH3[2].textContent += maths;
+            allH3[3].textContent += science;
+            allH3[4].textContent += sst;
+        }
+        function getAverage() {
+            let total = english + hindi + maths + science + sst;
+            total /= 5;
+            let h2 = document.querySelector('h2');
+            h2.textContent += total;
+        }
+        function getPercentage() {
+            let totalMarksObtained = english + hindi + maths + science + sst;
+            let totalMarksPossible = 500;
+            let percentage = (totalMarksObtained / totalMarksPossible) * 100;
+            let h2 = document.querySelectorAll('h2')[1];
+            h2.textContent += percentage.toFixed(2) + "%";
+        }
+
+    </script>
+
+</body>
+
+</html>
